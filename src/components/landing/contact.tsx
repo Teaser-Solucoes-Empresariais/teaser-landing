@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin } from "lucide-react"
 
 export default function Contact() {
   return (
-    <section id="contato" className="py-20 bg-gradient-to-br from-blue-50 to-red-50">
+    <section id="contato" className="h-screen py-20 bg-gradient-to-br from-blue-50 to-red-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-block bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
@@ -16,8 +16,7 @@ export default function Contact() {
             Pronto para <span className="text-blue-600">transformar</span> seu negócio?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
+            A Teaser está pronta para ajudar no que você precisa para buscar o próximo passo da sua empresa. Venha descobrir como!
           </p>
         </div>
 
@@ -26,8 +25,7 @@ export default function Contact() {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Vamos conversar sobre suas necessidades</h3>
               <p className="text-gray-600 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
+                Fale conosco e descubra o que podemos fazer por você. Nos envie um e-mail ou fale pelo nosso whatsapp para marcarmos uma conversa.
               </p>
             </div>
 
@@ -38,7 +36,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Email</div>
-                  <div className="text-gray-600">contato@teasersolucoes.com</div>
+                  <div className="text-gray-600">contato.teasermkt@gmail.com</div>
                 </div>
               </div>
 
@@ -48,7 +46,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Telefone</div>
-                  <div className="text-gray-600">(11) 9999-9999</div>
+                  <div className="text-gray-600">(86) 99968-9414</div>
                 </div>
               </div>
 
@@ -58,7 +56,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Endereço</div>
-                  <div className="text-gray-600">São Paulo, SP - Brasil</div>
+                  <div className="text-gray-600">Teresina, Piaui - Brasil</div>
                 </div>
               </div>
             </div>

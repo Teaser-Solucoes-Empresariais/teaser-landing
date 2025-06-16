@@ -5,31 +5,31 @@ const services = [
   {
     icon: Zap,
     title: "Soluções Rápidas",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+    description: " Ganhe tempo na sua rotina, utilizando soluções que funcionam de forma automatizada.",
     color: "text-red-600",
   },
   {
     icon: Shield,
     title: "Segurança Avançada",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+    description: "Atuamos em conformidade com a LGPD. Trabalhe com segurança para seus dados e informações.",
     color: "text-blue-600",
   },
   {
     icon: Users,
     title: "Equipe Especializada",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.",
+    description: "Conte com o apoio de profissionais multifacetados e que podem ajudar sua empresa em diversas frentes.",
     color: "text-red-600",
   },
   {
     icon: BarChart3,
     title: "Análise de Dados",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    description: "Seus dados são mais do que números, são pistas de como melhorar seu negócio. Tenha análises de como crescer sua empresa.",
     color: "text-blue-600",
   },
   {
     icon: Rocket,
     title: "Crescimento Acelerado",
-    description: "Et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
+    description: "Agilize suas atividades diárias e tenha mais liberdade para buscar o crescimento da sua organização.",
     color: "text-red-600",
   },
   {
@@ -42,7 +42,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicos" className="py-20 bg-white">
+    <section id="servicos" className="h-screen py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-4">

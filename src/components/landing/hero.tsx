@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
 import Image from "next/image"
@@ -5,7 +6,7 @@ import { TeaserText } from "../base/teaser-text"
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative bg-gradient-to-br from-blue-50 to-red-50 py-20 lg:py-32">
+    <section id="inicio" className="h-screen flex justify-center items-center relative bg-gradient-to-br from-blue-50 to-red-50 py-20 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
@@ -22,17 +23,30 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 cursor-pointer text-white">
+              <Button 
+                onClick={() => {
+                  window.location.href = "/on-progress"
+                }}
+                size="lg"
+                className="bg-red-600 hover:bg-red-700 cursor-pointer text-white"
+              >
                 Começar Agora
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 cursor-pointer hover:bg-blue-50">
+              <Button
+                onClick={() => {
+                  alert("Em breve, fique atento a mais novidades!!")
+                }}
+                size="lg"
+                variant="outline"
+                className="border-blue-600 text-blue-600 cursor-pointer hover:bg-blue-50"
+              >
                 <Play className="mr-2 h-5 w-5" />
                 Ver Demonstração
               </Button>
             </div>
 
-            <div className="flex items-center space-x-8 pt-8">
+            {/* <div className="flex items-center space-x-8 pt-8">
               <div className="text-center">
                 <div className="text-3xl font-bold text-red-600">50+</div>
                 <div className="text-sm text-gray-600">Clientes Satisfeitos</div>
@@ -45,7 +59,7 @@ export default function Hero() {
                 <div className="text-3xl font-bold text-red-600">24/7</div>
                 <div className="text-sm text-gray-600">Suporte</div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="relative">

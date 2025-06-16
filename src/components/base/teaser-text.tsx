@@ -2,7 +2,7 @@ import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 const teaserTextVariants = cva(
-  "bg-gradient-to-br from-red-500 to-blue-500 bg-clip-text text-transparent font-bold inline-block",
+  "bg-gradient-to-br from-[#C8272B] from-30% to-[#1F2B65] to-70% bg-clip-text text-transparent font-bold inline-block",
   {
     variants: {
       size: {

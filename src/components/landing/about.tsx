@@ -11,21 +11,21 @@ const features = [
 
 export default function About() {
   return (
-    <section id="sobre" className="py-20 bg-gradient-to-r from-red-50 to-blue-50">
+    <section id="sobre" className="h-screen flex justify-center items-center py-20 bg-gradient-to-r from-red-50 to-blue-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative">
             <Image
-              src="/placeholder.svg?height=500&width=600"
+              src="/evento_ne.png"
               alt="Sobre a Teaser Soluções"
               width={600}
               height={500}
               className="rounded-2xl shadow-xl"
             />
-            <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg">
+            {/* <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg">
               <div className="text-2xl font-bold text-red-600">5+</div>
               <div className="text-sm text-gray-600">Anos de Experiência</div>
-            </div>
+            </div> */}
           </div>
 
           <div className="space-y-8">
