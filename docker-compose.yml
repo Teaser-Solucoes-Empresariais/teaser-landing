@@ -1,0 +1,20 @@
+services:
+  teaser-landing:
+    build: .
+    container_name: teaser-landing
+    restart: always
+    env_file: .env.local
+    networks:
+      - traefik-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.teaser-landing.rule=Host(`teasersolucoes.com.br`)"
+      - "traefik.http.routers.teaser-landing.entrypoints=websecure"
+      - "traefik.http.routers.teaser-landing.tls.certresolver=myresolver"
+      - "traefik.http.services.teaser-landing.loadbalancer.server.port=3000"
+    ports:
+      - "3000"
+
+networks:
+  traefik-net:
+    external: true
