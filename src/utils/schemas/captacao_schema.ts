@@ -1,5 +1,13 @@
 import { z } from "zod";
 
+export const contatoSchema = z.object({
+  nome: z.string().min(3, { message: "O nome precisa ter no mínimo 3 caracteres." }),
+  email: z.string().email({ message: "Por favor, insira um e-mail válido." }),
+  assunto: z.string().min(5, { message: "O assunto precisa ter no mínimo 5 caracteres." }),
+  mensagem: z.string().min(10, { message: "A mensagem precisa ter no mínimo 10 caracteres." }),
+});
+
+
 export const captacaoSchema = z.object({
   personInfo: z.object({
     name: z.string().min(1, "Nome é obrigatório"),
@@ -25,4 +33,5 @@ export const captacaoSchema = z.object({
   }),
 });
 
+export type ContatoSchema = z.infer<typeof contatoSchema>;
 export type CaptacaoSchema = z.infer<typeof captacaoSchema>;
