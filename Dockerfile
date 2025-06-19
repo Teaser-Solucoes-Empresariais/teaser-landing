@@ -1,5 +1,5 @@
 # Etapa 1: Build
-FROM node:18-alpine AS builder
+FROM node:23-alpine AS builder
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ COPY . .
 RUN pnpm build
 
 # Etapa 2: Runtime
-FROM node:18-alpine AS runner
+FROM node:23-alpine AS runner
 
 WORKDIR /app
 
