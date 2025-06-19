@@ -1,8 +1,10 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { contatoSchema } from "@/utils/schemas/contato_schema";
+import { useMutation } from "@tanstack/react-query"
+import type { ContatoSchema } from "@/utils/schemas/contato_schema";
+import { useTeaserService } from "@/hooks/services/use-teaser-service";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,17 +14,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
-// Schema de validação
-const contatoSchema = z.object({
-  nome: z.string().min(3, { message: "O nome precisa ter no mínimo 3 caracteres." }),
-  email: z.string().email({ message: "Por favor, insira um e-mail válido." }),
-  assunto: z.string().min(5, { message: "O assunto precisa ter no mínimo 5 caracteres." }),
-  mensagem: z.string().min(10, { message: "A mensagem precisa ter no mínimo 10 caracteres." }),
-});
-
-type ContatoSchema = z.infer<typeof contatoSchema>;
 
 export default function Contact() {
+  const { contactUs } = useTeaserService()
+
   const form = useForm<ContatoSchema>({
     resolver: zodResolver(contatoSchema),
     defaultValues: {
@@ -33,47 +28,22 @@ export default function Contact() {
     },
   });
 
-  const onSubmit = async (data: ContatoSchema) => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    console.log("API URL Final:", apiUrl);
-
-    if (!apiUrl) {
-      toast.error("Erro de configuração: NEXT_PUBLIC_API_URL não encontrada.");
-      return;
-    }
-
-    try {
-      const fullUrl = `${apiUrl}/contato`;
-      console.log("Enviando requisição para:", fullUrl);
-      console.log("Payload:", data);
-
-      const response = await fetch(fullUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const responseText = await response.text();
-      console.log("Status da API:", response.status);
-      console.log("Resposta da API:", responseText);
-
-      if (!response.ok) {
-        toast.error(`Erro ao enviar: ${response.status}`, { description: responseText });
-        return;
-      }
-
+  const { mutate: mutateContact, isPending: contactPending } = useMutation<ContatoSchema, unknown, ContatoSchema>({
+    mutationFn: (data: ContatoSchema) => {
+      return contactUs(data) as unknown as Promise<ContatoSchema>
+    },
+    onSuccess: () => {
       toast.success("Mensagem enviada com sucesso!");
       form.reset();
-    } catch (error) {
-      console.error("Erro no fetch:", error);
-      toast.error("Erro de rede ou CORS!", {
-        description: error instanceof Error ? error.message : "Falha desconhecida",
-      });
+    },
+    onError: () => {
+      toast.error("Erro ao enviar mensagem. Tente novamente.");
     }
-  };
+  })
+
+  function onSubmit(data: ContatoSchema) {
+    mutateContact(data)
+  }
 
   return (
     <section id="contato" className="h-screen py-20 bg-gradient-to-br from-blue-50 to-red-50">
@@ -203,9 +173,9 @@ export default function Contact() {
                     type="submit"
                     size="lg"
                     className="w-full bg-red-600 hover:bg-red-700 text-white"
-                    disabled={form.formState.isSubmitting}
+                    disabled={contactPending}
                   >
-                    {form.formState.isSubmitting ? (
+                    {contactPending ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         Enviando...
