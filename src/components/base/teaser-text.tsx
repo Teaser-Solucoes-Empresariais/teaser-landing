@@ -6,6 +6,7 @@ const teaserTextVariants = cva(
   {
     variants: {
       size: {
+        "xl": "text-xl",
         "2xl": "text-2xl",
         "4xl": "text-4xl",
         "6xl": "text-6xl",
