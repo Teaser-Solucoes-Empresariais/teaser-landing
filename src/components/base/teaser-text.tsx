@@ -1,5 +1,6 @@
 import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
+import { cn } from '../../lib/utils';
 
 const teaserTextVariants = cva(
   "bg-gradient-to-br from-[#C8272B] from-30% to-[#1F2B65] to-70% bg-clip-text text-transparent font-bold inline-block",
@@ -20,11 +21,12 @@ const teaserTextVariants = cva(
 
 type TeaserTextProps = VariantProps<typeof teaserTextVariants> & {
   children?: React.ReactNode;
+  className?: string;
 };
 
-export function TeaserText({ size, children }: TeaserTextProps) {
+export function TeaserText({ size, children, className }: TeaserTextProps) {
   return (
-    <span className={teaserTextVariants({ size })}>
+    <span className={cn(teaserTextVariants({ size }), "py-2", className)}>
       {children ?? "Teaser Soluções"}
     </span>
   );
