@@ -13,8 +13,8 @@ const features = [
 export default function About() {
   return (
       <section
-          id="sobre"
-          className="min-h-screen flex justify-center items-center py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-red-50 to-blue-50"
+        id="sobre"
+        className="min-h-screen flex justify-center items-center py-16 sm:py-20 lg:py-24"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-center">
@@ -63,8 +63,8 @@ export default function About() {
               <div className="space-y-3 sm:space-y-4">
                 {features.map((feature, index) => (
                     <div
-                        key={index}
-                        className="flex items-start sm:items-center space-x-3 justify-center lg:justify-start group"
+                      key={index}
+                      className="flex items-start sm:items-center space-x-3 justify-start group"
                     >
                       <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-500 flex-shrink-0 mt-0.5 sm:mt-0 group-hover:scale-110 transition-transform duration-200" />
                       <span className="text-sm sm:text-base text-gray-700 leading-relaxed text-left">

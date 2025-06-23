@@ -14,7 +14,7 @@ export default function Footer() {
                 <TeaserText size="2xl" />
               </div>
               <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                Soluções que levam hiper produtividade para sua empresa. Não deixe que falta de tempo impeça você garantir um crescimento saudável para seu negócio. Conte com nossa ajuda!
+                Soluções que levam hiper produtividade para sua empresa. Não deixa a falta de tempo impedir você de garantir um crescimento saudável para seu negócio. Conte com a nossa ajuda!
               </p>
               {/* Redes sociais */}
               <div className="flex space-x-4">

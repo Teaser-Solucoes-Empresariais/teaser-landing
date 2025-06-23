@@ -7,8 +7,8 @@ import { TeaserText } from "../base/teaser-text"
 export default function Hero() {
   return (
       <section
-          id="inicio"
-          className="min-h-screen flex justify-center items-center relative bg-gradient-to-br from-blue-50 to-red-50 py-16 sm:py-20 lg:py-32"
+        id="inicio"
+        className="min-h-screen flex justify-center items-center relative py-16 sm:py-20 lg:py-32"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
