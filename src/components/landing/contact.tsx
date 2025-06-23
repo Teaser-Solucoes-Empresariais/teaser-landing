@@ -28,19 +28,49 @@ export default function Contact() {
   });
 
   const { mutate: mutateContact, isPending: contactPending } = useMutation<ContatoSchema, unknown, ContatoSchema>({
-    mutationFn: (data: ContatoSchema) => {
-      return contactUs(data) as unknown as Promise<ContatoSchema>
+    mutationFn: async (data: ContatoSchema) => {
+      return await contactUs(data) as unknown as Promise<ContatoSchema>
     },
     onSuccess: () => {
-      toast.success("Mensagem enviada com sucesso!");
+      toast.success("Mensagem enviada com sucesso!", {
+        description: "Entraremos em contato em breve.",
+        duration: 4000,
+      });
       form.reset();
     },
-    onError: () => {
-      toast.error("Erro ao enviar mensagem. Tente novamente.");
+    onError: (error) => {
+      const errorMessage = error instanceof Error
+        ? error.message
+        : "Erro ao enviar mensagem. Tente novamente"
+
+      toast.error("Ops! Algo deu errrado", {
+        description: errorMessage,
+        duration: 4000,
+        action: {
+          label: "Tentar novamente",
+          onClick: () => {
+            const currentFormValues = form.getValues();
+            mutateContact(currentFormValues);
+          }
+        }
+      })
+    },
+    onMutate: () => {
+      toast.loading("Enviando mensagem...", {
+        id: "contact-loading"
+      });
+    },
+    onSettled: () => {
+      toast.dismiss("contact-loading")
     }
   })
 
   function onSubmit(data: ContatoSchema) {
+    if (!data.nome.trim() || !data.email.trim() || !data.mensagem.trim()) {
+      toast.error("Preencha todos os campos obrigatórios");
+      return;
+    }
+
     mutateContact(data)
   }
 
@@ -71,7 +101,7 @@ export default function Contact() {
   return (
       <section
           id="contato"
-          className="min-h-screen py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-blue-50 to-red-50"
+          className="min-h-screen py-16 sm:py-20 lg:py-24"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Cabeçalho da Seção */}
